@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
@@ -15,6 +16,8 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
     List<Person> findByDepartment(Department department);  // получим всех людей для этого Департамента
 
+    @Query("SELECT p FROM Person p JOIN FETCH p.department WHERE p.id = :id" )
+    Optional<Person>findById(@Param("id") long id);
 
     @Query(value = "Select * from Person p where name ILIKE :startWith%", nativeQuery = true)
     List<Person> findPersonByNameStartingWith(@Param("startWith") String startWith);

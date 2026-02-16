@@ -3,7 +3,9 @@ package com.example.demo.service.impl;
 import com.example.demo.entity.Department;
 import com.example.demo.entity.Person;
 
+
 import java.util.List;
+import java.util.Optional;
 
 public interface PersonService {
     public void createPerson(Person person);
@@ -16,4 +18,5 @@ public interface PersonService {
     public void update(long id, Person updatedPerson);
     public void delete(long id);
 
+    Optional<Person>findById(long id);
 }

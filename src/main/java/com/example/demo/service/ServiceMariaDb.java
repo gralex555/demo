@@ -5,6 +5,7 @@ import com.example.demo.entity.Person;
 import com.example.demo.service.impl.PersonService;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ServiceMariaDb implements PersonService {
 
@@ -41,5 +42,10 @@ public class ServiceMariaDb implements PersonService {
     @Override
     public void delete(long id) {
 
+    }
+
+    @Override
+    public Optional<Person> findById(long id) {
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ import com.example.demo.service.ServiceMariaDb;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 @AllArgsConstructor
@@ -13,8 +15,12 @@ public class PersonController {
     final PersonServiceImplementation personServiceImplementation;
 
     @GetMapping("/findById/{id}")
-    public Person findPersonById(@PathVariable Long id) {
-        return personServiceImplementation.findPersonById(id);
+    public Person findById(@PathVariable Long id) {
+        return personServiceImplementation.findById(id).get();
+    }
+    @GetMapping("/findAll")
+    public List<Person> findAll () {
+        return personServiceImplementation.findAll();
     }
 
     @PostMapping

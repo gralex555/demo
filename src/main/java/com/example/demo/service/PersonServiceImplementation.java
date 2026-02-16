@@ -6,12 +6,14 @@ import com.example.demo.entity.Person;
 import com.example.demo.repository.PersonRepository;
 import com.example.demo.service.impl.PersonService;
 import lombok.AllArgsConstructor;
+
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.InterruptedIOException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -41,6 +43,10 @@ public class PersonServiceImplementation implements PersonService {
 
         return personRepository.findById(id).orElseThrow();
         // проверяет данные и выкидывает исключение
+    }
+    @Override
+    public Optional<Person>findById(long id){
+        return personRepository.findById(id);
     }
 
     @Override
